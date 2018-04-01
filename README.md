@@ -7,7 +7,7 @@ This project serves two purpose
 - Schedule needs to be generated from present working day. 
 - If present day is a non working day, then it generates schedule from the next upcoming working day.
 - Schedule is generated for two weeks for 10 engineers.
-- Schedule is genarted with 2 shifts per day.
+- Schedule is generated with 2 shifts per day.
 - Schedule is generated with at most 1 half day shift and at least 1 full day support per engineer in two weeks. 
 - Workings days are considered from Monday to Friday.
 
