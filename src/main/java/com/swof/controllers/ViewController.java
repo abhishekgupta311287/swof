@@ -17,7 +17,7 @@ public class ViewController {
 
     @RequestMapping("/")
     public ModelAndView index() {
-        ModelAndView mav = new ModelAndView("welcome");
+        ModelAndView mav = new ModelAndView("swof");
         mav.addObject("message",message);
         return mav;
     }
