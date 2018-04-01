@@ -13,17 +13,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class EngineerRepository implements IEngineerRepository {
 
-    ArrayList<Engineer> engineers = new ArrayList<>();
-//
-//    public static IEngineerRepository getSingleton() {
-//        return ApplicationContextProvider.getApplicationContext().getBean(IEngineerRepository.class);
-//    }
+    private ArrayList<Engineer> engineers = new ArrayList<>();
 
     @Autowired
     private EngineerRepository() {
-        engineers.add(new Engineer(0, "Sujal"));
-        engineers.add(new Engineer(1, "Rujal"));
-        engineers.add(new Engineer(2, "Pujal"));
+        engineers.add(new Engineer(0, "Abhishek"));
+        engineers.add(new Engineer(1, "Ravi"));
+        engineers.add(new Engineer(2, "Nilesh"));
+        engineers.add(new Engineer(3, "Ruby"));
+        engineers.add(new Engineer(4, "Jaya"));
+        engineers.add(new Engineer(5, "Yogesh"));
+        engineers.add(new Engineer(6, "Hubert"));
+        engineers.add(new Engineer(7, "Paul"));
+        engineers.add(new Engineer(8, "Shazia"));
+        engineers.add(new Engineer(9, "Ramya"));
     }
 
     public final ArrayList<Engineer> getAll() {

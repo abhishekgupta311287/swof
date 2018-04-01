@@ -1,25 +1,75 @@
 package com.swof.controllers;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+import com.swof.interfaces.IEngineerRepository;
+import com.swof.interfaces.IScheduleGeneratorService;
+import com.swof.model.Day;
+import com.swof.model.Engineer;
+import com.swof.model.Schedule;
+import com.swof.model.Shift;
+import com.swof.utils.Constants;
+import com.swof.utils.DateUtils;
+import com.swof.utils.HtmlUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ViewController {
+    private IEngineerRepository engineerRepository;
+    private IScheduleGeneratorService scheduleGeneratorService;
 
-    // inject via application.properties
-    @Value("${welcome.message:test}")
-    private String message = "Hello World";
+    @Autowired
+    public ViewController(IEngineerRepository engineerRepository, IScheduleGeneratorService scheduleGeneratorService) {
+        this.engineerRepository = engineerRepository;
+        this.scheduleGeneratorService = scheduleGeneratorService;
+    }
 
-    @RequestMapping("/")
-    public ModelAndView index() {
-        ModelAndView mav = new ModelAndView("swof");
-        mav.addObject("message",message);
-        return mav;
+    @RequestMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
+    public String schedule() {
+        ArrayList<Engineer> engineers = engineerRepository.getAll();
+
+        ArrayList<Shift> shifts = scheduleGeneratorService.generate(Constants.SHIFT_PER_PERIOD, Constants.SHIFTS_PER_ENGINEER_PER_PERIOD);
+
+        int shiftsPerDay = Constants.SHIFT_PER_PERIOD / Constants.SHIFT_DAYS;
+
+        ArrayList<Day> days = new ArrayList<>();
+
+        Date now = new Date();
+
+        for (int i = 0; i < Constants.SHIFT_DAYS; i++) {
+            Day day = new Day();
+            List<Shift> shiftList = shifts.stream().skip(i * shiftsPerDay).limit(shiftsPerDay).collect(Collectors.toList());
+            day.setShifts(shiftList);
+            day.setWeekNumber(i < 5 ? 1 : 2);
+
+            long dateMillis = DateUtils.getDate(now);
+            now = new Date(dateMillis);
+
+            SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE");
+            String dayStr = simpleDateformat.format(now);
+
+            simpleDateformat = new SimpleDateFormat("dd/MM/yyyy");
+            String dateStr = simpleDateformat.format(now);
+
+            day.setDate(dateStr);
+            day.setName(dayStr);
+            days.add(day);
+
+            dateMillis = dateMillis + (24 * 60 * 60 * 1000);
+            now = new Date(dateMillis);
+        }
+
+        Schedule schedule = new Schedule();
+        schedule.setDays(days);
+
+        return HtmlUtils.getHtml(engineers, days);
     }
 
 }

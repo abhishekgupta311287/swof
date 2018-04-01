@@ -13,12 +13,10 @@ import java.util.List;
 @RestController
 public class ScheduleController {
     private IScheduleGeneratorService scheduleGeneratorService;
-//    private IOptions<ScheduleOptions> optionsIOptions;
 
     @Autowired
     public ScheduleController(IScheduleGeneratorService scheduleGeneratorService) {
         this.scheduleGeneratorService = scheduleGeneratorService;
-//        optionsIOptions = optionsAccessor;
     }
 
     /**
