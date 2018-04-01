@@ -15,6 +15,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+/**
+ * This class defines rule to be checked that en engineer should not be assigned a shift on consecutive day.
+ */
 @Component
 public class ConsecutiveDayRule implements IRule {
     @Autowired
@@ -42,9 +45,6 @@ public class ConsecutiveDayRule implements IRule {
                 return !((engineer2 != null && engineer2.getId() == engineerId) ||
                         (engineer3 != null && engineer3.getId() == engineerId));
             }
-
-//            // The same engineer is not defined for the previous day, so the proposal is valid
-//            return true;
         }
     }
 }

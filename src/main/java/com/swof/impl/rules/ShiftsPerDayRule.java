@@ -14,20 +14,23 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+/**
+ * This class defines rule to be checked that en engineer can do at most half day shift in a day.
+ */
 @Component
 public class ShiftsPerDayRule implements IRule {
     @Autowired
     public ShiftsPerDayRule() {
     }
 
-    public final boolean isValid(int shiftId, int candidateId, ArrayList<Shift> shifts) {
+    public final boolean isValid(int shiftId, int engineerId, ArrayList<Shift> shifts) {
         // If there are currently no shifts then this proposal is valid
         if (getCount(shifts) == 0) {
             return true;
         } else if (shiftId % 2 == 1) {
             Engineer engineer = shifts.get(shiftId - 1).getEngineer();
             //Its an afternoon shift, so check the morning is not the same enginner
-            return !(engineer != null && engineer.getId() == candidateId);
+            return !(engineer != null && engineer.getId() == engineerId);
         } else {
             //Proposed shift is for a morning, we only check when populating the afternoon shift
             return true;

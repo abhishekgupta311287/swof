@@ -5,7 +5,7 @@ import com.swof.model.Engineer;
 import java.util.ArrayList;
 
 /**
- * Provides methods to manipulate a pool of Engineers
+ * Provides methods to manipulate a list of Engineers
  */
 public interface IEngineerPool {
     /**
@@ -16,16 +16,16 @@ public interface IEngineerPool {
     void addEngineers(ArrayList<Engineer> engineers);
 
     /**
-     * Retrieves an engineer from pool at random
+     * Retrieves an engineer from list at random
      *
      * @return
      */
     Engineer getRandomEngineer();
 
     /**
-     * Removes the specified engineer from the pool
+     * Removes the specified engineer from the list
      *
-     * @param engineer The engineer to be removed from the pool
+     * @param engineer The engineer to be removed from the list
      */
     void removeEngineer(Engineer engineer);
 

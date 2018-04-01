@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+/**
+ * This class verifies that the generated shift pass all the defined rules
+ */
 @Component
 public class RuleEvaluator implements IRuleEvaluator {
     private ArrayList<IRule> rules = new ArrayList<>();
@@ -21,11 +24,11 @@ public class RuleEvaluator implements IRuleEvaluator {
 
     }
 
-    public final boolean isValid(int shiftId, int candidateId, ArrayList<Shift> shifts) {
+    public final boolean isValid(int shiftId, int engineerId, ArrayList<Shift> shifts) {
         boolean valid = true;
         // Check if all the rules pass
         for (IRule rule : rules) {
-            valid &= rule.isValid(shiftId, candidateId, shifts);
+            valid &= rule.isValid(shiftId, engineerId, shifts);
         }
 
         return valid;

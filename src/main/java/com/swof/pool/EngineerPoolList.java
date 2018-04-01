@@ -1,7 +1,7 @@
-package com.swof.repo;
+package com.swof.pool;
 
 
-import com.swof.interfaces.IEngineerRepository;
+import com.swof.interfaces.IEngineerPoolList;
 import com.swof.model.Engineer;
 
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class EngineerRepository implements IEngineerRepository {
+public class EngineerPoolList implements IEngineerPoolList {
 
     private ArrayList<Engineer> engineers = new ArrayList<>();
 
     @Autowired
-    private EngineerRepository() {
+    private EngineerPoolList() {
         engineers.add(new Engineer(0, "Abhishek"));
         engineers.add(new Engineer(1, "Ravi"));
         engineers.add(new Engineer(2, "Nilesh"));

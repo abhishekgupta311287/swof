@@ -5,7 +5,7 @@ import com.swof.model.Shift;
 import java.util.ArrayList;
 
 /**
- * Provides a strategy for schedule generation
+ * Provides a way for schedule generation
  */
 public interface IScheduleStrategy {
     /**

@@ -1,6 +1,6 @@
 package com.swof.controllers;
 
-import com.swof.interfaces.IEngineerRepository;
+import com.swof.interfaces.IEngineerPoolList;
 import com.swof.interfaces.IScheduleGeneratorService;
 import com.swof.model.Day;
 import com.swof.model.Engineer;
@@ -20,17 +20,23 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class deals with the view layer for presenting schedule and engineers list
+ */
 @RestController
 public class ViewController {
-    private IEngineerRepository engineerRepository;
+    private IEngineerPoolList engineerRepository;
     private IScheduleGeneratorService scheduleGeneratorService;
 
     @Autowired
-    public ViewController(IEngineerRepository engineerRepository, IScheduleGeneratorService scheduleGeneratorService) {
+    public ViewController(IEngineerPoolList engineerRepository, IScheduleGeneratorService scheduleGeneratorService) {
         this.engineerRepository = engineerRepository;
         this.scheduleGeneratorService = scheduleGeneratorService;
     }
 
+    /**
+     * @return html page that displays the schedule and list of engineers
+     */
     @RequestMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
     public String schedule() {
         ArrayList<Engineer> engineers = engineerRepository.getAll();

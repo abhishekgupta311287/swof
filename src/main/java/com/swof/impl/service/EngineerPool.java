@@ -21,8 +21,8 @@ public class EngineerPool implements IEngineerPool {
     private ArrayList<Engineer> engineersPullable;
     @Autowired
     public EngineerPool(IRandomAdapter randomAdapter) {
-        this.engineersAvailable = new ArrayList<Engineer>();
-        this.engineersPullable = new ArrayList<Engineer>();
+        this.engineersAvailable = new ArrayList<>();
+        this.engineersPullable = new ArrayList<>();
         this.randomAdapter = randomAdapter;
     }
 

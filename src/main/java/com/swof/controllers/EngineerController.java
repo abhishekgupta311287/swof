@@ -1,6 +1,6 @@
 package com.swof.controllers;
 
-import com.swof.interfaces.IEngineerRepository;
+import com.swof.interfaces.IEngineerPoolList;
 import com.swof.model.Engineer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,20 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * This class exposes the api to deal with the list of engineers
+ */
 @RestController
 public class EngineerController {
 
-    private IEngineerRepository engineerRepository;
+    private IEngineerPoolList engineerRepository;
 
     @Autowired
-    public EngineerController(IEngineerRepository engineerRepository) {
+    public EngineerController(IEngineerPoolList engineerRepository) {
         this.engineerRepository = engineerRepository;
     }
 
     /**
-     * Retrieves all Engineers
-     *
-     * @return List of engineers
+     * @return List of engineers added in advance
      */
 
 //    @RequestMapping(value = "/api/engineers", method = RequestMethod.GET)
@@ -33,10 +34,8 @@ public class EngineerController {
     }
 
     /**
-     * Gets a single engineer with the matching id
-     *
-     * @param id Identifier of the engineer to return
-     * @return The engineer with the specified Id
+     * @param id Identifier of the engineer to be returned
+     * @return The engineer with the specified id
      */
 
     @RequestMapping(value = "/api/engineer/{id}", method = RequestMethod.GET)
@@ -47,9 +46,6 @@ public class EngineerController {
 
     /**
      * Adds a new engineer with the given name
-     * <p>
-     * Note that the name must be quoted if using Swagger
-     *
      * @param name Name of the engineer.
      * @return Id of the new engineer
      */
@@ -61,7 +57,7 @@ public class EngineerController {
     }
 
     /**
-     * Removes the engineer with the given identifier from the repository
+     * deletes the engineer with the given identifier from the predefined array list
      *
      * @param id Identifier of the engineer to delete
      * @return OK if deleted

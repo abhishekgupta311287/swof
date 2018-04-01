@@ -10,9 +10,9 @@ public interface IRule {
      * Determines if the rule is valid given the passed parameters
      *
      * @param shiftId     Identifier of the proposed shift
-     * @param candidateId Identifier of the proposed candiate
+     * @param engineerId Identifier of the proposed candiate
      * @param shifts      Curent schedule to shifts
-     * @return True if rule passed against passed criteria
+     * @return True if rule passed against passed defined set of rules
      */
-    boolean isValid(int shiftId, int candidateId, ArrayList<Shift> shifts);
+    boolean isValid(int shiftId, int engineerId, ArrayList<Shift> shifts);
 }

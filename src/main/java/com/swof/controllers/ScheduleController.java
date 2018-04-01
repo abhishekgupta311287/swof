@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * This class deal with the schedule generation api
+ */
 @RestController
 public class ScheduleController {
     private IScheduleGeneratorService scheduleGeneratorService;
@@ -19,10 +22,11 @@ public class ScheduleController {
         this.scheduleGeneratorService = scheduleGeneratorService;
     }
 
+
     /**
-     * Generate a new schedule
-     *
-     * @return List of shifts for the new schedule
+     * @param ShiftsPerPeriod number of shifts per period
+     * @param ShiftsPerEngineerPerPeriod number of shifts and engineer to do at max
+     * @return the list of shift
      */
     @RequestMapping(value = "/api/shifts/{ShiftsPerPeriod}/{ShiftsPerEngineerPerPeriod}", method = RequestMethod.GET)
     public final List<Shift> get(@PathVariable int ShiftsPerPeriod, @PathVariable int ShiftsPerEngineerPerPeriod) {

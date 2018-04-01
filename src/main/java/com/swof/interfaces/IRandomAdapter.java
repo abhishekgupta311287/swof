@@ -1,7 +1,7 @@
 package com.swof.interfaces;
 
 /**
- * Adapts the Random number generator class
+ * This helps to generate a random number
  */
 public interface IRandomAdapter {
     int nextInt(int max);

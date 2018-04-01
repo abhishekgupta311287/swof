@@ -2,7 +2,7 @@ package com.swof.impl.service;
 
 
 import com.swof.interfaces.IEngineerPool;
-import com.swof.interfaces.IEngineerPoolFactory;
+import com.swof.interfaces.IEngineerFactory;
 import com.swof.interfaces.IScheduleGeneratorService;
 import com.swof.interfaces.IScheduleStrategy;
 import com.swof.model.Shift;
@@ -13,11 +13,11 @@ import java.util.ArrayList;
 
 @Component
 public class ScheduleGeneratorService implements IScheduleGeneratorService {
-    private IEngineerPoolFactory engineerPoolFactory;
+    private IEngineerFactory engineerPoolFactory;
     private IScheduleStrategy scheduleStrategy;
 
     @Autowired
-    public ScheduleGeneratorService(IEngineerPoolFactory engineerPoolFactory, IScheduleStrategy scheduleStrategy) {
+    public ScheduleGeneratorService(IEngineerFactory engineerPoolFactory, IScheduleStrategy scheduleStrategy) {
         this.engineerPoolFactory = engineerPoolFactory;
         this.scheduleStrategy = scheduleStrategy;
     }
