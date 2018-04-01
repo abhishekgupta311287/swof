@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Provides a way for generation of a schedule
  */
-public interface IScheduleGeneratorService
+public interface IScheduleGenerator
 {
     /**
      Generates a new schedule with the specified parameters

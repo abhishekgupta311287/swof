@@ -3,7 +3,7 @@ package com.swof.impl.service;
 
 import com.swof.interfaces.IEngineerPool;
 import com.swof.interfaces.IEngineerFactory;
-import com.swof.interfaces.IScheduleGeneratorService;
+import com.swof.interfaces.IScheduleGenerator;
 import com.swof.interfaces.IScheduleStrategy;
 import com.swof.model.Shift;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class ScheduleGeneratorService implements IScheduleGeneratorService {
+public class ScheduleGenerator implements IScheduleGenerator {
     private IEngineerFactory engineerPoolFactory;
     private IScheduleStrategy scheduleStrategy;
 
     @Autowired
-    public ScheduleGeneratorService(IEngineerFactory engineerPoolFactory, IScheduleStrategy scheduleStrategy) {
+    public ScheduleGenerator(IEngineerFactory engineerPoolFactory, IScheduleStrategy scheduleStrategy) {
         this.engineerPoolFactory = engineerPoolFactory;
         this.scheduleStrategy = scheduleStrategy;
     }

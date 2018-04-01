@@ -1,7 +1,7 @@
 package com.swof.controllers;
 
 import com.swof.interfaces.IEngineerPoolList;
-import com.swof.interfaces.IScheduleGeneratorService;
+import com.swof.interfaces.IScheduleGenerator;
 import com.swof.model.Day;
 import com.swof.model.Engineer;
 import com.swof.model.Schedule;
@@ -26,10 +26,10 @@ import java.util.stream.Collectors;
 @RestController
 public class ViewController {
     private IEngineerPoolList engineerRepository;
-    private IScheduleGeneratorService scheduleGeneratorService;
+    private IScheduleGenerator scheduleGeneratorService;
 
     @Autowired
-    public ViewController(IEngineerPoolList engineerRepository, IScheduleGeneratorService scheduleGeneratorService) {
+    public ViewController(IEngineerPoolList engineerRepository, IScheduleGenerator scheduleGeneratorService) {
         this.engineerRepository = engineerRepository;
         this.scheduleGeneratorService = scheduleGeneratorService;
     }

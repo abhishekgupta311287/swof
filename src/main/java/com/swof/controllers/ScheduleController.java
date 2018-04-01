@@ -1,6 +1,6 @@
 package com.swof.controllers;
 
-import com.swof.interfaces.IScheduleGeneratorService;
+import com.swof.interfaces.IScheduleGenerator;
 import com.swof.model.Shift;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +15,10 @@ import java.util.List;
  */
 @RestController
 public class ScheduleController {
-    private IScheduleGeneratorService scheduleGeneratorService;
+    private IScheduleGenerator scheduleGeneratorService;
 
     @Autowired
-    public ScheduleController(IScheduleGeneratorService scheduleGeneratorService) {
+    public ScheduleController(IScheduleGenerator scheduleGeneratorService) {
         this.scheduleGeneratorService = scheduleGeneratorService;
     }
 
