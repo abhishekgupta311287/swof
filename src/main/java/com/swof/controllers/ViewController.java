@@ -35,12 +35,10 @@ public class ViewController {
     }
 
     /**
-     * @return html page that displays the schedule and list of engineers
+     * @return day wise list of schedule
      */
-    @RequestMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
-    public String schedule() {
-        ArrayList<Engineer> engineers = engineerRepository.getAll();
-
+    @RequestMapping(value = "/schedule")
+    public Schedule getSchedule() {
         ArrayList<Shift> shifts = scheduleGeneratorService.generate(Constants.SHIFT_PER_PERIOD, Constants.SHIFTS_PER_ENGINEER_PER_PERIOD);
 
         int shiftsPerDay = Constants.SHIFT_PER_PERIOD / Constants.SHIFT_DAYS;
@@ -75,7 +73,16 @@ public class ViewController {
         Schedule schedule = new Schedule();
         schedule.setDays(days);
 
-        return HtmlUtils.getHtml(engineers, days);
+        return schedule;
     }
 
+    /**
+     * @return html page that displays the schedule and list of engineers
+     */
+    @RequestMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
+    public String index() {
+        ArrayList<Engineer> engineers = engineerRepository.getAll();
+
+        return HtmlUtils.getHtml(engineers, getSchedule().getDays());
+    }
 }

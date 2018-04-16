@@ -78,4 +78,19 @@ public class HtmlUtils {
 
         return html;
     }
+
+    public static String getErrorHtml() {
+        String html = "<html><head>"
+                + "<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1'>"
+                + "<title>Support Wheel of Fate</title>"
+                + "</head>"
+                + "<body>"
+                + "<center>"
+                + "<h2><strong>Support Wheel of Fate</strong></h2>"
+                + "<h4><strong>No path mapping found !</strong></h4>"
+                + "</center>"
+                + "</body></html>";
+
+        return html;
+    }
 }
