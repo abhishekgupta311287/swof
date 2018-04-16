@@ -37,7 +37,7 @@ public class ViewController {
     /**
      * @return day wise list of schedule
      */
-    @RequestMapping(value = "/schedule")
+    @RequestMapping(value = "/api/schedule")
     public Schedule getSchedule() {
         ArrayList<Shift> shifts = scheduleGeneratorService.generate(Constants.SHIFT_PER_PERIOD, Constants.SHIFTS_PER_ENGINEER_PER_PERIOD);
 
