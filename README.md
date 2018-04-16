@@ -18,6 +18,9 @@ or
 
 ##   API
 
+- http://swof.us-east-2.elasticbeanstalk.com/api/schedule
+    - Returns a day wise shift schedule to be consumed by the front end client.
+
 - http://swof.us-east-2.elasticbeanstalk.com/api/shifts/{ShiftsPerPeriod}/{ShiftsPerEngineerPerPeriod}
     - Generates a shift with the given shifts per period and shifts per engineer per period.
 
